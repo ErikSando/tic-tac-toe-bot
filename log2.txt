@@ -1,0 +1,39 @@
+=== Representing the grid ===
+
+There are three states I need: blank, cross, circle
+So, I'm thinking of using two 16 bit numbers: one for the crosses, one for the circles. To get the blank squares I can use NOR
+
+NOR is ~(A | B)
+
+so ~(crosses | circles) = blank squares
+
+A move would be a struct that contains: square (16 bit integer), and value (0 or 1)
+
+Moves are input as the integer, the side is alternated, starting with cross
+
+=== Day 1 - Beginning programming (21/04/2025) ===
+
+I'm using C++, although I should probably use C as I am a little more familiar with console I/O on C.
+
+I want to add this functionality:
+- Start game (as player 1 or 2)
+- Set the grid and continue from there
+- Check whether the game is winnable for either player
+
+On second thought, I've decided to make the board a class rather than a struct.
+
+I've created the print and setgrid functions, although set grid will be expanded on later to prevent illegal board configurations.
+
+There is a mistake somewhere as the crosses in the printed board are not where they should be.
+
+=== Day 2 ===
+
+I found the mistake: I switched rows and columns in the for loops in Grid::Print(); I also mistakenly thought that binary numbers were written left to right in code (as in 0th bit followed by 1st bit and so on) however it should be right to left. This caused me to think the tic tac toe grid was printed in reverse order, even thought it was correct.
+
+I'm going to start working on the rest of the Grid class functions I declared earlier, and then move on to move handling.
+
+For the check victory functions, I could either create hard coded victory arrangements and check the grid against each one for both sides, or use an algorithm. I will test the speed of each method to find which is faster.
+
+CheckVictory function completed (hardcoded)
+MakeMove function completed
+SetGrid function completed
