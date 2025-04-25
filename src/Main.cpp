@@ -8,11 +8,6 @@
 int main(int argc, char* argv[]) {
     Grid grid;
 
-    // uint16_t crosses = 0b101000010;
-    // uint16_t circles = 0b010011000;
-
-    //bool s = grid.SetGrid(crosses, circles);
-
     std::string input;
 
     for (;;) {
@@ -41,7 +36,6 @@ int main(int argc, char* argv[]) {
             input = "";
             std::cout << "Enter square: ";
             std::cin >> input;
-            //std::cout << input << std::endl;
             
             int user_move = -1;
 
