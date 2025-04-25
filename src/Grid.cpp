@@ -3,15 +3,10 @@
 #include <Globals.h>
 #include <Grid.h>
 
-uint16_t one = 1;
-
-#define GetBit(_int, bit) ((_int >> bit) & (one))
-#define SetBit(_int, bit) ((_int) |= ((one) << (bit)))
-
 Grid::Grid() {
     side = 0;
-    // players[0] = (uint16_t) 0;
-    // players[1] = (uint16_t) 0;
+    players[0] = (uint16_t) 0;
+    players[1] = (uint16_t) 0;
 }
 
 // Brian Kernighan's algorithm
@@ -26,7 +21,7 @@ inline int NumberOfBits(int n) {
     return count;
 }
 
-bool Grid::CheckVictory(int _side) {
+bool Grid::CheckVictory() {
     // I could program an algorithm, but it may be faster to hard code the winning arrangements and perform for each one:
     // arranagement & victory arrangement == victory arrangement
     // victory arrangements:
@@ -42,7 +37,7 @@ bool Grid::CheckVictory(int _side) {
     //if (!_side) _side = side; // use the current side if it is not specified
     //if (_side != 0 && _side != 1) return false;
 
-    uint16_t arrangement = players[_side];
+    uint16_t arrangement = players[side ^ 1];
 
     for (uint16_t wa : WinningArrangements) {
         if ((arrangement & wa) == wa) return true;
@@ -51,11 +46,27 @@ bool Grid::CheckVictory(int _side) {
     return false;
 }
 
+bool Grid::IsFilled() {
+    uint16_t empty_squares = ~(players[0] | players[1] | 0b1111111000000000);
+
+    if (!empty_squares) return true;
+    return false;
+}
+
 bool Grid::MakeMove(int square) {
     if (GetBit(players[0], square) || GetBit(players[1], square)) return false;
 
     SetBit(players[side], square);
-    side ^= one;
+    side ^= 1;
+
+    return true;
+}
+
+bool Grid::TakeMove(int square) {
+    if (!GetBit(players[0], square) && !GetBit(players[1], square)) return false;
+
+    side ^= 1;
+    ClearBit(players[side], square);
 
     return true;
 }
@@ -75,10 +86,16 @@ bool Grid::SetGrid(uint16_t crosses, uint16_t circles) {
     int n_crosses = NumberOfBits(crosses);
     int n_circles = NumberOfBits(circles);
 
-    if (n_crosses != n_circles && n_crosses != n_circles + 1) {
+    int _side = (n_crosses - n_circles) + 1;
+
+    std::cout << _side << std::endl;
+
+    if (_side != 1 && _side != 2) {
         std::cout << "Invalid number of crosses/circles, can not set grid" << std::endl;
         return false;
     }
+
+    side = _side - 1;
 
     players[0] = crosses;
     players[1] = circles;
@@ -89,8 +106,6 @@ bool Grid::SetGrid(uint16_t crosses, uint16_t circles) {
 char characters[4] = { '.', 'x', 'o', '?' };
 
 void Grid::Print() {
-    uint16_t empty = !(players[0] | players[1]);
-
     for (int r = 0; r < 3; r++) {
         for (int c = 0; c < 3; c++) {
             uint16_t square = 3 * r + c;

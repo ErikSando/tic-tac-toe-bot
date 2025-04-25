@@ -37,3 +37,12 @@ For the check victory functions, I could either create hard coded victory arrang
 CheckVictory function completed (hardcoded)
 MakeMove function completed
 SetGrid function completed
+
+=== Day 3 ===
+
+Changed the way I was importing stuff a little bit to fix some problems.
+
+Started working on the search function, not working correctly yet.
+
+
+

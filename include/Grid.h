@@ -17,16 +17,15 @@ class Grid {
     Grid();
 
     bool MakeMove(int square);
+    bool TakeMove(int square);
     bool IsWinnable(int _side);
     bool SetGrid(uint16_t crosses, uint16_t circles);
-    bool CheckVictory(int _side);
+    bool CheckVictory();
+    bool IsFilled();
 
     int side;
     
     void Print();
-
-    // not sure if I need private members, might make public later
-    private:
 
     uint16_t players[2];
 };
