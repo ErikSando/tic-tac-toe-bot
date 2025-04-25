@@ -9,8 +9,6 @@ const uint16_t WinningArrangements[8] = {
     0b001010100
 };
 
-#define Invalid -1
-
 class Grid {
     public:
 

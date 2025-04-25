@@ -33,26 +33,54 @@ int main(int argc, char* argv[]) {
         grid.Print();
 
         for (;;) {
-            input = "";
-            std::cout << "Enter square: ";
-            std::cin >> input;
+            // input = "";
+            // std::cout << "Enter square: ";
+            // std::cin >> input;
             
-            int user_move = -1;
+            // int user_move = -1;
 
-            try {
-                user_move = std::stoi(input);
-            }
-            catch (...) {
-                std::cout << "Invald input" << std::endl;
-                continue;
+            // try {
+            //     user_move = std::stoi(input);
+            // }
+            // catch (...) {
+            //     std::cout << "Invald input" << std::endl;
+            //     continue;
+            // }
+
+            // if (user_move < 0 || user_move > 8) {
+            //     std::cout << "Invalid square" << std::endl;
+            //     continue;
+            // }
+
+            bool valid_move = false;
+
+            for (;;) {
+                input = "";
+                std::cout << "Enter square: ";
+                std::cin >> input;
+                
+                int user_move = -1;
+
+                try {
+                    user_move = std::stoi(input);
+                }
+                catch (...) {
+                    std::cout << "Invald input" << std::endl;
+                    continue;
+                }
+
+                if (user_move < 0 || user_move > 8) {
+                    std::cout << "Invalid square" << std::endl;
+                    continue;
+                }
+
+                valid_move = grid.MakeMove(user_move);
+
+                if (valid_move) break;
+
+                std::cout << "Invalid move" << std::endl;
             }
 
-            if (user_move < 0 || user_move > 8) {
-                std::cout << "Invalid square" << std::endl;
-                continue;
-            }
-
-            grid.MakeMove(user_move);
             grid.Print();
 
             if (grid.CheckVictory()) {
