@@ -33,25 +33,6 @@ int main(int argc, char* argv[]) {
         grid.Print();
 
         for (;;) {
-            // input = "";
-            // std::cout << "Enter square: ";
-            // std::cin >> input;
-            
-            // int user_move = -1;
-
-            // try {
-            //     user_move = std::stoi(input);
-            // }
-            // catch (...) {
-            //     std::cout << "Invald input" << std::endl;
-            //     continue;
-            // }
-
-            // if (user_move < 0 || user_move > 8) {
-            //     std::cout << "Invalid square" << std::endl;
-            //     continue;
-            // }
-
             bool valid_move = false;
 
             for (;;) {
