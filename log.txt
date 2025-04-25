@@ -1,9 +1,0 @@
-Beginning (21/04/2025)
-
-I think basic min-max will be enough considering how simple the game is
-I'll start thinking about how I will represent the grid and how moves will work
-
-Day 1 (21/04/2025) - starting programming
-
-Created some basic functions for the game grid (print, setgrid)
-Either print or setgrid are not working correctly, which I will look into later

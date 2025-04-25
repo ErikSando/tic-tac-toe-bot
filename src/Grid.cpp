@@ -54,12 +54,6 @@ bool Grid::TakeMove(int square) {
     return true;
 }
 
-bool Grid::IsWinnable(int side) {
-
-
-    return false;
-}
-
 bool Grid::SetGrid(uint16_t crosses, uint16_t circles) {
     if (crosses & circles != 0) {
         std::cout << "Overlap between circles and crosses, can not set grid" << std::endl;
