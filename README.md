@@ -1,2 +1,3 @@
 # tic-tac-toe-bot
- A work in progress bot made for tic tac toe, not putting much time into it but it's a relatively simple project so it shouldn't take too long to finish,.
+ A bot made for tic tac toe.
+ Doesn't have a difficulty setting, it always plays the best move it can find.
