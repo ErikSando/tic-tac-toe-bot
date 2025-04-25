@@ -4,9 +4,7 @@
 #include <Grid.h>
 
 Grid::Grid() {
-    side = 0;
-    players[0] = (uint16_t) 0;
-    players[1] = (uint16_t) 0;
+    Clear();
 }
 
 // Brian Kernighan's algorithm
@@ -101,6 +99,12 @@ bool Grid::SetGrid(uint16_t crosses, uint16_t circles) {
     players[1] = circles;
 
     return true;
+}
+
+void Grid::Clear() {
+    side = 0;
+    players[0] = (uint16_t) 0;
+    players[1] = (uint16_t) 0;
 }
 
 char characters[4] = { '.', 'x', 'o', '?' };

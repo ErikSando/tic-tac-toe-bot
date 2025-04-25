@@ -92,7 +92,9 @@ int main(int argc, char* argv[]) {
         std::cout << "Play again? (y/n): ";
         std::cin >> input;
 
-        if (input != "y" || input != "Y") break;
+        if (input != "y" && input != "Y") break;
+
+        grid.Clear();
     }
 
     return 0;

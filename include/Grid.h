@@ -15,6 +15,10 @@ class Grid {
     public:
 
     Grid();
+    
+    int side;
+
+    uint16_t players[2];
 
     bool MakeMove(int square);
     bool TakeMove(int square);
@@ -23,9 +27,6 @@ class Grid {
     bool CheckVictory();
     bool IsFilled();
 
-    int side;
-    
+    void Clear();
     void Print();
-
-    uint16_t players[2];
 };
