@@ -1,7 +1,7 @@
 // #include <iostream>
 
-// #include <Globals.h>
-// #include <Surch.h>
+// #include "Globals.h"
+// #include "Surch.h"
 
 // void GenerateMoves(Grid& grid, MoveList* list) {
 //     uint16_t empty_squares = ~(grid.players[0] | grid.players[1]);

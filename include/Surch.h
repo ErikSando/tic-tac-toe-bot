@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Grid.h>
+#include "Grid.h"
 
 typedef struct {
     int moves[9];

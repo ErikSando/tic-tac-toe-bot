@@ -1,9 +1,9 @@
+#include <bitset>
 #include <iostream>
 #include <string>
-#include <bitset>
 
-#include <Globals.h>
-#include <Surch.h>
+#include "Globals.h"
+#include "Surch.h"
 
 int main(int argc, char* argv[]) {
     Grid grid;

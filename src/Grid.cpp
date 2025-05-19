@@ -1,23 +1,13 @@
 #include <iostream>
 
-#include <Globals.h>
-#include <Grid.h>
+#include "Globals.h"
+#include "Grid.h"
 
 Grid::Grid() {
     Clear();
 }
 
-// Brian Kernighan's algorithm
-inline int NumberOfBits(int n) {
-    int count = 0;
-    
-    while (n != 0) {
-        n &= (n - 1);
-        count++;
-    }
-
-    return count;
-}
+#define NumberOfBits(n) __builtin_popcountll(n)
 
 bool Grid::CheckVictory() {
     uint16_t arrangement = players[side ^ 1];
